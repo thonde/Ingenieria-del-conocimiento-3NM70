@@ -1,0 +1,46 @@
+jproba:-write('{"jproba":'),usuario.
+usuario:-write('"usuario":'),read(X),write(X),write('",'),arbol.
+arbol:-write('"nbarbol":'),read(X),write(X),write('",'),dimension.
+dimension:-write('"dimension":{"nbdimension":'),read(X),write(X),write('",'),valores.
+valores:-write('['),read(X),(X='valor'->valor; (X='fin'->write(']'))).
+valor:-write('"valor":{"nbvalor":'),read(X),write(X),write('", "proba":'),read(Y),write(Y),write('}'),a1.
+a1:-read(X),(X='valor'->(write(','),valor); (X='dimension'->dimension;(X='fin'->write(']}')))).
+:-jproba.
+
+
+
+
+
+Datos a meter
+
+profe.
+financieras.
+materia.
+valor.
+inteligencia.
+0.2313.
+dimension.
+industria.
+valor.
+a.
+0.0408.
+valor.
+b.
+0.0340.
+valor.
+c.
+0.0340.
+valor.
+d.
+0.0408.
+valor.
+e.
+0.0408.
+valor.
+f.
+0.0408.
+fin.
+
+
+
+Link https://rextester.com/EBFZ67564
