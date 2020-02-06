@@ -4,4 +4,6 @@ Integrantes:
 Cruz Garcia Carlos Eduardo                                                                                                         
 Jaimes Campos Irwin Alejandro                                                                                         
 Morales Reyes Daniel                                                                                                
-Rodriguez Gerardo Luis Angel                                                                                        
+Rodriguez Gerardo Luis Angel
+Vargas Aguilar David
+                                                                                        
