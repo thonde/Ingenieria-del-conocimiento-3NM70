@@ -1,4 +1,4 @@
-# Ingenieria-del-conocimiento-3NV71
+# Ingenieria-del-conocimiento-3NM70
 Evidencias y trabajos
 Integrantes:                                                                                                                
 Cruz Garcia Carlos Eduardo                                                                                                         
