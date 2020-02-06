@@ -1,0 +1,31 @@
+jloco:-write('{"jloco":'),usuario, write('}').
+usuario:-write('"usuario":'),read(X),write(X),write('",'),ontologia.
+ontologia:-write('"ontologia":{"nbontologia":'),read(X),write(X),write('",'),objeto, write('}').
+objeto:-write('"objeto":{"nbobjeto":'),read(X),write(X),write('",'),atributo, write('}').
+
+atributo:- read(X), write('"nbatributo":"'), write(X), write('" :{'),tipoatributo(X), write('}').
+tipoatributo(M):- read(X), (X='metodo'->metodo(M); write(X)).
+metodo(M):- write('"function() {'),a2,write(' return '), write(M), write(';}"').
+a2:- read(X), (X='decision'->decision;a3(X)).
+a3(X):- (X='asignacion' -> asignacion;(X='fin'->write(''))).
+asignacion:- read(X), write(X), write('='), read(Y), write(Y), write(';'),a2.
+decision:-write('es decision').
+
+:- jloco.
+
+
+Datos a meter
+profe.
+impuestos.
+calcular-isan.
+isan.
+metodo.
+asignacion. 
+precio. 
+300.
+asignacion. 
+precio. 
+precio*2. 
+fin.
+
+Link https://rextester.com/STTP56814
