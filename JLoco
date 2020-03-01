@@ -1,31 +1,43 @@
-jloco:-write('{"jloco":'),usuario, write('}').
-usuario:-write('"usuario":'),read(X),write(X),write('",'),ontologia.
-ontologia:-write('"ontologia":{"nbontologia":'),read(X),write(X),write('",'),objeto, write('}').
-objeto:-write('"objeto":{"nbobjeto":'),read(X),write(X),write('",'),atributo, write('}').
-
-atributo:- read(X), write('"nbatributo":"'), write(X), write('" :{'),tipoatributo(X), write('}').
-tipoatributo(M):- read(X), (X='metodo'->metodo(M); write(X)).
-metodo(M):- write('"function() {'),a2,write(' return '), write(M), write(';}"').
-a2:- read(X), (X='decision'->decision;a3(X)).
-a3(X):- (X='asignacion' -> asignacion;(X='fin'->write(''))).
+jloco:- write('{"Jloco":"'),usuario.
+usuario:- write('{"usuario":"'), read(U) , write(U), write('",'), ontologia, write('}').
+ontologia:- write(' "ontologia":"'),read(X) , write(X), write('",'),objeto.
+objeto:- write(' "objeto":'), read(X), write('"'), write(X), write('", '), atributos.
+atributos:- atributo.
+atributo:- read(X), write('"'), write(X), write('":'),tipoatributo(X),a1. 
+a1:- read(X),(X='atributo'->write(' ,'),atributo;(X='fin'->write(' ?'))).
+tipoatributo(M):- read(X), X='metodo'->metodo(M); terminal.
+terminal:- read(X), X='entero'->entero; cadena.
+cadena:- read(X),write('"'), write(X), write('",').
+entero:-read(X), write(X).
+metodo(M):- write('"function() {'),a2,write(' return  '),write(M),write(';}"').
+a2:- read(X),( X='decision'->decision;(X='asignacion'->asignacion;(X='fin'->write(' ')))).
 asignacion:- read(X), write(X), write('='), read(Y), write(Y), write(';'),a2.
-decision:-write('es decision').
-
-:- jloco.
-
-
-Datos a meter
-profe.
-impuestos.
-calcular-isan.
-isan.
+decision:- write('if('),condicion,write(')'), verdadero, falso.
+condicion:-read(X), write(X).
+verdadero:- write('{'),a2,write('}').
+falso:-  write('else {'),a2,write('}').
+:- atributos.
+      
+entradas
+precio.
+terminal.
+entero.
+10.
+atributo.
+age.
 metodo.
-asignacion. 
-precio. 
-300.
-asignacion. 
-precio. 
-precio*2. 
+decision.
+obj.precio<212318.
+asignacion.
+age.
+obj.precio*(2/100).
+fin.
+decision.
+obj.precio<350000.
+asignacion.
+age.
+obj.precio*(5/100).
+fin.
 fin.
 
-Link https://rextester.com/STTP56814
+https://rextester.com/PBZ27214
