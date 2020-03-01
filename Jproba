@@ -1,10 +1,20 @@
-jproba:-write('{"jproba":'),usuario.
-usuario:-write('"usuario":'),read(X),write(X),write('",'),arbol.
-arbol:-write('"nbarbol":'),read(X),write(X),write('",'),dimension.
-dimension:-write('"dimension":{"nbdimension":'),read(X),write(X),write('",'),valores.
-valores:-write('['),read(X),(X='valor'->valor; (X='fin'->write(']'))).
-valor:-write('"valor":{"nbvalor":'),read(X),write(X),write('", "proba":'),read(Y),write(Y),write('}'),a1.
-a1:-read(X),(X='valor'->(write(','),valor); (X='dimension'->dimension;(X='fin'->write(']}')))).
+jproba:- write('{ "jproba": {'), users, write('}').
+users:- read(X),(X='user'->write('"users":['), usersObj; (X='finUsers'->finUsers)).
+usersObj:- write('{'),write('"nUser":'),read(X),write('"'),write(X),write('",'),arbol.
+arbol:- read(X),(X='arbol'->write('"arboles":['), arbolObj; (X='finArboles'->write('"arboles":['),finArbol)).
+arbolObj:- write('{'),write('"nArbol":'),read(X),write('"'),write(X),write('",'),dimensiones.
+dimensiones:- read(X),(X='dimension'->write('"dimensiones":['), dimensionObj; (X='finDimensiones'->finDimensiones)).
+dimensionObj:- write('{'),write('"nDimension":'),read(X),write('"'),write(X),write('",'),valores.
+valores:- read(X),(X='valor'->write('"valores":['), valorObj; (X='finValores'->finValores)).
+valorObj:- write('{'),write('"nbvalor":'),write('"'),read(X),write(X),write('", "proba":'),read(Y),write(Y),write('}'), valorOpts.
+valorOpts:- read(X),(X='valor'->(write(','),valorObj); (X='finValores'->finValores)).
+finValores:- write('] }'),dimensionOpts.
+dimensionOpts:- read(X),(X='dimension'->(write(','),dimensionObj); (X='finDimensiones'->finDimensiones)).
+finDimensiones:- write(']}'), arbolOpts.
+arbolOpts:- read(X),(X='arbol'->(write(','),arbolObj); (X='finArboles'->finArbol)).
+finArbol:- write(']}'), usersOpts.
+usersOpts:- read(X),(X='user'->(write(','),usersObj); (X='finUsers'->finUsers)).
+finUsers:- write(']}').
 :-jproba.
 
 
@@ -13,34 +23,20 @@ a1:-read(X),(X='valor'->(write(','),valor); (X='dimension'->dimension;(X='fin'->
 
 Datos a meter
 
+user.
 profe.
-financieras.
+arbol.
 materia.
-valor.
-inteligencia.
-0.2313.
 dimension.
-industria.
+fisica.
 valor.
-a.
-0.0408.
+0.25.
+calculo.
 valor.
-b.
-0.0340.
-valor.
-c.
-0.0340.
-valor.
-d.
-0.0408.
-valor.
-e.
-0.0408.
-valor.
-f.
-0.0408.
-fin.
+0.28.
 
+finDimensiones.
+finArboles.
+finUsers.
 
-
-Link https://rextester.com/EBFZ67564
+https://rextester.com/WROB30101
